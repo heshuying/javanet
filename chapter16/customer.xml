@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customers>
+    <customer>
+        <id>1</id>
+        <name>Tom</name>
+        <age>25</age>
+        <address>shanghai</address>
+    </customer>
+    <customer>
+        <id>2</id>
+        <name>Linda</name>
+        <age>18</age>
+        <address>beijing</address>
+    </customer>
+</customers>

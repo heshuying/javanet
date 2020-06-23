@@ -1,0 +1,4 @@
+#
+#Thu Nov 14 00:19:04 EST 2019
+mypack.HelloServiceImpl=javax.jws.WebService
+mypack.HelloService=javax.jws.WebService

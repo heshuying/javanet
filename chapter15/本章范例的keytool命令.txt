@@ -1,0 +1,38 @@
+1.生成test.keystore密钥库，包含weiqin条目
+keytool -genkeypair -alias weiqin -keyalg RSA  -keystore C:\chapter15\test.keystore
+
+2.在test.keystore密钥库中加入lulu条目
+keytool -genkeypair -alias lulu -keyalg RSA  -keystore C:\chapter15\test.keystore
+
+3.查看密钥库
+keytool -list -v -keystore C:\chapter15\test.keystore -storepass "123456"
+
+4.把密钥库中的weiqin条目导出到weiqin.crt安全证书文件中
+keytool  -export -alias weiqin  -keystore C:\chapter15\test.keystore  -file C:\chapter15\weiqin.crt   -storepass "123456"
+
+5.删除密钥库中的weiqin条目
+keytool -delete  -alias  weiqin    -keystore C:\chapter15\test.keystore   -storepass 123456
+
+6.把weiqin.crt安全证书导入到密钥库中，成为weiqin条目
+keytool  -import -alias weiqin   -keystore C:\chapter15\testTrust.keystore  -file C:\chapter15\weiqin.crt   -storepass "123456"
+
+------------------------------------------------------
+练习题7中的keytool命令
+
+1.生成服务器端的server.keystore密钥库
+keytool -genkey -keystore server.keystore -storepass 123456 -keyalg RSA -validity 365 -keypass 123456
+
+2.生成服务器端的安全证书 server.crt
+keytool -export -keystore server.keystore -storepass 123456 -file server.crt
+
+3.将服务端安全证书导入到客户端clientTrust密钥库
+keytool -import -keystore clientTrust.keystore -storepass 123456 -file server.crt
+
+4. 生成客户端的client.keystore密钥库 
+keytool -genkey -keystore client.keystore -storepass 123456 -keyalg RSA -validity 365 -keypass 123456
+
+5.生成客户端的安全证书client.crt
+keytool -export -keystore client.keystore -storepass 123456 -file client.crt
+
+6. 将客户端安全证书导入到服务器端的serverTrust密钥库
+keytool -import -keystore serverTrust.keystore -storepass 123456 -file client.crt

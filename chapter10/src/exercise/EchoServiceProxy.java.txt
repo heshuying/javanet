@@ -1,0 +1,39 @@
+package exercise;
+
+public class EchoServiceProxy implements EchoService{
+  private String host;
+  private int port;
+  private Connector connector;
+  
+  public EchoServiceProxy(String host,int port)throws IOException{
+     this.host=host;
+     this.port=port;
+     connector=new Connector(host,port);
+  }
+  public String echo(String msg)throws RemoteException{
+     try{
+       Call call=new Call("proxy1.EchoService","echo",new Class[]{String.class},new Object[]{msg}); 
+      connector.send(call);
+      call=(Call)connector.receive();
+      Object result=call.getResult();
+      if(result instanceof Throwable)
+        throw new RemoteException((Throwable)result);
+      else
+        return (String)result;
+    }catch(Exception e){
+       throw new RemoteException(e);
+    }
+  }
+
+  public void close(){
+    if(connector!=null)
+      connector.close();
+  }
+} 
+
+
+/****************************************************
+ * 作者：孙卫琴                                     *
+ * 来源：<<Java网络编程核心技术详解>>                       *
+ * 技术支持网址：www.javathinker.net                *
+ ***************************************************/
