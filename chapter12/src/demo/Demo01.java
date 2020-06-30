@@ -1,7 +1,9 @@
+package demo;
+
 import java.sql.*;
 
-public class DBTester1 {
-    public static void main(String args[]) throws Exception {
+public class Demo01 {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Connection con;
         Statement stmt;
         ResultSet rs;
@@ -42,11 +44,5 @@ public class DBTester1 {
         stmt.close();
         con.close();
     }
+
 }
-
-
-/****************************************************
- * 作者：孙卫琴                                     *
- * 来源：<<Java网络编程核心技术详解>>                       *
- * 技术支持网址：www.javathinker.net                *
- ***************************************************/
