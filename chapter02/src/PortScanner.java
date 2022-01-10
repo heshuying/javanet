@@ -13,7 +13,7 @@ public class PortScanner {
           socket = new Socket(host, port);
           System.out.println("There is a server on port "+port);
       } catch (IOException e) {
-          System.out.println("Can't connect to port "+port);
+//          System.out.println("Can't connect to port "+port);
       } finally {
         try {
             if(socket!=null)socket.close();
@@ -26,8 +26,4 @@ public class PortScanner {
 }
 
 
-/****************************************************
- * 作者：孙卫琴                                     *
- * 来源：<<Java网络编程核心技术详解>>                       *
- * 技术支持网址：www.javathinker.net                *
- ***************************************************/
+

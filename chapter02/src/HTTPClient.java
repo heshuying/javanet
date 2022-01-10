@@ -2,7 +2,7 @@ import java.net.*;
 import java.io.*;
 
 public class HTTPClient {
-  String host="www.javathinker.net";
+  String host="www.baidu.com";
   int port=80;
   Socket socket;
   
@@ -12,7 +12,7 @@ public class HTTPClient {
   
 
   public void communicate()throws Exception{
-    StringBuffer sb=new StringBuffer("GET "+"/index.jsp"+" HTTP/1.1\r\n");
+    StringBuffer sb=new StringBuffer("GET "+"/"+" HTTP/1.1\r\n");
     sb.append("Host: "+host+"\r\n");
     sb.append("Accept: */*\r\n");
     sb.append("Accept-Language: zh-cn\r\n");
@@ -23,7 +23,7 @@ public class HTTPClient {
     //发出HTTP请求
     OutputStream socketOut=socket.getOutputStream();
     socketOut.write(sb.toString().getBytes());
-    socketOut. flush();  
+    socketOut.flush();
 
     //接收响应结果
     InputStream socketIn=socket.getInputStream();
@@ -56,8 +56,4 @@ public class HTTPClient {
 }
 
 
-/****************************************************
- * 作者：孙卫琴                                     *
- * 来源：<<Java网络编程核心技术详解>>                       *
- * 技术支持网址：www.javathinker.net                *
- ***************************************************/
+
